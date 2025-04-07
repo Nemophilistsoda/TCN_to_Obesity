@@ -2,6 +2,7 @@
 data:
   window_size: 12    # 滑动窗口大小（历史数据长度）
   train_ratio: 0.8   # 训练集比例
+  normalize: "minmax"     # 可选["standard", "none"]
 
 # 模型参数
 model:
@@ -9,8 +10,17 @@ model:
   hidden_size: 16    # 隐藏层维度
   learning_rate: 0.01
   epochs: 100
+  batch_size: 32          # 默认值
+  optimizer: "adam"       # 可选["sgd", "rmsprop"]
+  dropout_rate: 0.2       # 防止过拟合
 
 # 路径配置
 paths:
+  root_dir: "data/"        # 根目录动态拼接
   national_data: "data/national/national.csv"
   local_data: "data/local/local.csv"
+
+# config.yml （正确示例）
+data_params:
+  window_size: 10    # 必须存在此字段
+  batch_size: 32

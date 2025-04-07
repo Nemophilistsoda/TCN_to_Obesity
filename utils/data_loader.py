@@ -12,6 +12,6 @@ def load_data(data_path, window_size):
 
 def load_config(config_path="configs/params.yaml"):
     """加载配置参数"""
-    with open(config_path, 'r') as f:
+    with open(config_path, 'r', encoding='utf-8') as f:
         config = yaml.safe_load(f)
     return config

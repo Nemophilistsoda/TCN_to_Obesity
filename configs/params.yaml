@@ -1,0 +1,16 @@
+# 数据参数
+data:
+  window_size: 12    # 滑动窗口大小（历史数据长度）
+  train_ratio: 0.8   # 训练集比例
+
+# 模型参数
+model:
+  input_size: 1      # 输入特征维度（肥胖率=1，若添加GDP则改为2）
+  hidden_size: 16    # 隐藏层维度
+  learning_rate: 0.01
+  epochs: 100
+
+# 路径配置
+paths:
+  national_data: "data/national/national.csv"
+  local_data: "data/local/local.csv"

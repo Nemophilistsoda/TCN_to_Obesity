@@ -23,6 +23,18 @@ def main():
     # 可视化
     plot_results(y[-10:], preds, save_path="results/figures/result.png")
 
+    # 在main.py中添加数据探索代码
+    config = load_config()
+    local_data = np.genfromtxt(config['paths']['local_data'],
+                               delimiter=',',
+                               skip_header=1)
+    local_values = local_data[:, 1]  # 假设第1列是月份，第2列是肥胖率
+
+    print("基层数据统计：")
+    print("均值:", np.mean(local_values))
+    print("方差:", np.var(local_values))
+    # 若方差<0.01，说明数据波动小，模型难以捕捉变化
+
 
 
 

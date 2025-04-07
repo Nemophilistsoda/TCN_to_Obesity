@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 设置中文字体为黑体
+plt.rcParams['axes.unicode_minus'] = False    # 解决负号显示问题
 import numpy as np
 
 def plot_results(ground_truth, predictions, save_path="results/figures/result.png"):

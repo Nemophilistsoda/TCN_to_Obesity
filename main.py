@@ -24,5 +24,7 @@ def main():
     plot_results(y[-10:], preds, save_path="results/figures/result.png")
 
 
+
+
 if __name__ == "__main__":
     main()

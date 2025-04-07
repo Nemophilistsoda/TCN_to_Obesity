@@ -1,7 +1,7 @@
 from models.simple_tcn import SimpleTCN
 from utils.data_loader import load_data, load_config
 from utils.visualize import plot_results
-
+import numpy as np
 
 def main():
     # 加载配置

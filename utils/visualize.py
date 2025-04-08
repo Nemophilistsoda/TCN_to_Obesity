@@ -1,23 +1,33 @@
+# visualize.py
 import matplotlib.pyplot as plt
-plt.rcParams['font.sans-serif'] = ['SimHei']  # 设置中文字体为黑体
-plt.rcParams['axes.unicode_minus'] = False    # 解决负号显示问题
+import shap
+import torch
 import numpy as np
 
-def plot_results(ground_truth, predictions, save_path="results/figures/result.png"):
-    plt.figure(figsize=(10, 5))
-    plt.plot(ground_truth, label="真实值", marker='o')
-    plt.plot(predictions, label="预测值", marker='x', linestyle='--')
-    plt.xlabel("时间步")
-    plt.ylabel("肥胖率")
-    plt.title("肥胖率预测效果对比")
+
+def plot_comparison(y_true, y_pred, save_path):
+    plt.rcParams['font.sans-serif'] = ['SimHei']  # 中文字体设置
+    plt.rcParams['axes.unicode_minus'] = False
+    plt.figure(figsize=(10, 6))
+    plt.plot(y_true, label='真实值', marker='o')
+    plt.plot(y_pred, label='预测值', linestyle='--', marker='x')
+    plt.xlabel('时间步')
+    plt.ylabel('肥胖率')
+    plt.title('真实值与预测值对比')
     plt.legend()
     plt.grid(True)
     plt.savefig(save_path)
     plt.close()
 
-def plot_feature_importance(features, importance, save_path="results/figures/feature_importance.png"):
-    plt.figure(figsize=(8, 4))
-    plt.barh(features, importance)
-    plt.title("特征重要性分析")
+
+def shap_analysis(model, background, test_data, feature_names, save_path):
+    # 移除冗余的numpy转换
+    plt.figure()
+    # 删除以下重复代码
+    # shap.summary_plot(shap_values,
+    #                  test_data.numpy(),
+    #                  feature_names=feature_names,
+    #                  plot_type="bar")
+    plt.tight_layout()
     plt.savefig(save_path)
     plt.close()

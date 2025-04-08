@@ -1,0 +1,33 @@
+# 数据配置
+data_params:
+  window_size: 24                # 滑动窗口长度
+  train_ratio: 0.8               # 训练集比例
+  use_features: [gdp]            # 仅保留gdp特征
+
+# 模型参数
+model_params:
+  window_size: 5  # 建议设置为12（1年）或24（2年）等合理值
+  input_size: 2                # 输入特征维度（肥胖率+GDP）
+  hidden_size: 32
+  num_layers: 3
+  dilation_factors: [1, 2, 4]  # 各层扩张系数
+
+# 路径配置
+data_paths:
+  national: "data/national/national.csv"
+  local: "data/local/local.csv"
+  model_save: "models/saved/tcn_pro.pt"
+  result_dir: "results/pro_reports/"
+
+model_paths:
+  tcn: "models/saved/tcn_pro.pt"
+
+result_paths:
+  predictions: "results/pro_reports/predictions.csv"
+  comparison_fig: "results/pro_reports/comparison.png"
+  shap_fig: "results/pro_reports/shap_analysis.png"
+# 训练参数
+training:
+  epochs: 100
+  batch_size: 32
+  learning_rate: 0.001
